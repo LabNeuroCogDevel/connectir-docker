@@ -14,14 +14,21 @@
 options(repos="http://cran.us.r-project.org")
 
 # --- 0. system and build depends
+# also see
+# https://github.com/czarrar/Rinstall/blob/master/connectir_install.R
 
 # for docker:r-base, would need to downgrade gcc
 # system("apt-get update &&  apt-get install -y libssl-dev libcurl4-openssl-dev libssh2-1-dev")
 
-install.packages(c("devtools", "RcppArmadillo", "bigmemory"))
+install.packages(c("devtools", "codetools", "testthat",
+                   "optparse", "getopt",
+                   "foreach", "doMC",
+                   "RcppArmadillo", "bigmemory", "biganalytics"
+                   ))
 # NB. installs newest version of Rcpp as depend, we will downgrade to compile niftir
 
 library(devtools)
+install_github("czarrar/bigalgebra")
 install_github("czarrar/bigextensions")
 install_github("cran/Rcpp", ref="b5bec57") # 0.12.5 (May 14 2016)
 install_github("czarrar/niftir")
