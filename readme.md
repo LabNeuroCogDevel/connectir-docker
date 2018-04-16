@@ -10,15 +10,20 @@ We can use docker to get GCC from Debian oldstable (jessie), compile dependencie
 ## Build
 
 ```bash
-docker build -t connectir .
+docker build -t connectir https://github.com/LabNeuroCogDevel/connectir-docker.git
+# add aliases/functions
+# this is sketchy. you should read the the file before adding it to your bashrc!
+curl https://raw.githubusercontent.com/LabNeuroCogDevel/connectir-docker/master/connectir.src.bash >> ~/.bashrc && source ~/.bashrc
 ```
+
+or clone the repo and `docker build -t connectir .`
 
 ## Usage
 
 ### Simplified Usage
 
 ```bash
-source connectir.src.bash # only need once per bash session
+# source connectir.src.bash if cloneing/not using sketchy curl # only need once per bash session
 # added aliases to match tutorial 
 connectir_subdist.R  -i ...
 connectir_mdmr.R  -i ...
