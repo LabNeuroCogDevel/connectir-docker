@@ -26,6 +26,9 @@ install_github("czarrar/bigextensions")
 install_github("cran/Rcpp", ref="b5bec57") # 0.12.5 (May 14 2016)
 install_github("czarrar/niftir")
 
+# finally do the main thing
+install_github("czarrar/connectir")
+
 i <- installed.packages()
 i[grep("Rcpp|big|niftir", i[, "Package"]), "Version"]
 #        Rcpp bigextensions     bigmemory bigmemory.sri        niftir 
