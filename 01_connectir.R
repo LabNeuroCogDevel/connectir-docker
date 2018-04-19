@@ -20,17 +20,26 @@ options(repos="http://cran.us.r-project.org")
 # for docker:r-base, would need to downgrade gcc
 # system("apt-get update &&  apt-get install -y libssl-dev libcurl4-openssl-dev libssh2-1-dev")
 
-install.packages(c("devtools", "codetools", "testthat",
-                   "optparse", "getopt",
-                   "foreach", "doMC",
-                   "RcppArmadillo", "bigmemory", "biganalytics"
-                   ))
 # NB. installs newest version of Rcpp as depend, we will downgrade to compile niftir
 
+# use devtools to install old Rcpp
+install.packages("devtools")
 library(devtools)
+
+# install other depencies
+install.packages(c( "codetools", "testthat",
+                   "optparse", "getopt",
+                   "foreach", "doMC",
+                   "RcppArmadillo", "bigmemory", "biganalytics",
+                   # these are not required, but might be nice
+                   "tidyverse", "ggplot2"
+                   ))
+
+install_github("cran/Rcpp", ref="b5bec57") # 0.12.5 (May 14 2016)
+# redo with this Rcpp
+install.packages(dependencies=F, c("bigmemory", "biganalytics"))
 install_github("czarrar/bigalgebra")
 install_github("czarrar/bigextensions")
-install_github("cran/Rcpp", ref="b5bec57") # 0.12.5 (May 14 2016)
 install_github("czarrar/niftir")
 
 # finally do the main thing
