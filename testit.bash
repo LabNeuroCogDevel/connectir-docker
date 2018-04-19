@@ -1,0 +1,1 @@
+docker run -it  -v /Volumes:/Volumes -v /home:/home -w /home/foranw/scratch/ --entrypoint connectir_subdist.R connectir  -i testinput.txt --automask1 --brainmask1 mask.nii --bg temp.nii --memlimit 20 -c 3 -t 4 output 
