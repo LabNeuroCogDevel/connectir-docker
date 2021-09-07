@@ -11,7 +11,8 @@
 ##   old gcc (4.9.2 deb:jessie), new Rcpp (0.12.16)
 ##   new gcc (7.3.0 deb:stable), old Rcpp (0.12.5)
 
-options(repos="http://cran.us.r-project.org")
+#options(repos="http://cran.us.r-project.org")
+options(repos="http://cran.mirrors.hoobly.com")
 
 # --- 0. system and build depends
 # also see
@@ -23,18 +24,19 @@ options(repos="http://cran.us.r-project.org")
 # NB. installs newest version of Rcpp as depend, we will downgrade to compile niftir
 
 # use devtools to install old Rcpp
-install.packages("devtools")
-library(devtools)
 
 # install other depencies
 install.packages(c( "codetools", "testthat",
                    "optparse", "getopt",
                    "foreach", "doMC",
                    "RcppArmadillo", "bigmemory", "biganalytics",
+                   "devtools",
+                   "rlang", "purrr",
                    # these are not required, but might be nice
                    "tidyverse", "ggplot2"
                    ))
 
+library(devtools)
 install_github("cran/Rcpp", ref="b5bec57") # 0.12.5 (May 14 2016)
 # redo with this Rcpp
 install.packages(dependencies=F, c("bigmemory", "biganalytics"))
